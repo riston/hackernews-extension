@@ -11,7 +11,13 @@ export function incItem ()
     return { type: INC_COUNT };
 };
 
-export function addItem (title)
+/**
+ * Add news item to list.
+ *
+ * @method addItem
+ * @param {Object} item
+ */
+export function addItem (item)
 {
-    return { type: ADD_ITEM, title };
+    return { type: ADD_ITEM, item };
 };
