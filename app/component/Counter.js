@@ -3,6 +3,11 @@ import React, {Component, PropTypes} from "react";
 
 export default class Counter extends Component {
 
+    static propTypes = {
+        count: PropTypes.number.isRequired,
+        onIncClick: PropTypes.func.isRequired,
+    };
+
     render ()
     {
         return <div>
@@ -11,8 +16,3 @@ export default class Counter extends Component {
         </div>
     }
 }
-
-Counter.propTypes = {
-    count: PropTypes.number.isRequired,
-    onIncClick: PropTypes.func.isRequired,
-};

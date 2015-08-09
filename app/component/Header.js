@@ -1,7 +1,7 @@
 
-import React from "react";
+import React, {Component} from "react";
 
-class Header extends React.Component {
+export default class Header extends Component {
 
     render ()
     {
@@ -10,5 +10,3 @@ class Header extends React.Component {
         );
     }
 }
-
-module.exports = Header;

@@ -11,13 +11,12 @@
 
 ## TODO (Includes general tasks)
 
-  - Firebase research, how it works event trigger
+  - Local cache for stories
+  - Firebase research, how it works, event triggering
   - Data model, how to get the news and updates
     - By adding comment to news how to get update event
 
-  - Create a git repository also push code
-  - Use OBS for streaming next time
-  - Livecode profile and description
+  - Create a git repository also push code [x]
 
 ## License
 

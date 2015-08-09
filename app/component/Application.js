@@ -1,5 +1,5 @@
 
-import "../style/base.less"
+import "../style/base.less";
 
 import I from "immutable";
 import React, {Component, PropTypes} from "react";
@@ -9,53 +9,7 @@ import {incItem} from "../Action";
 
 import Header from "./Header";
 import Counter from "./Counter";
-
-class Item extends Component {
-
-    static propTyppes = {
-        id:          PropTypes.number.isRequired,
-        title:       PropTypes.string.isRequired,
-        url:         PropTypes.string.isRequired,
-        time:        PropTypes.number.isRequired,
-        by:          PropTypes.string.isRequired,
-        score:       PropTypes.number.isRequired,
-        descendants: PropTypes.number.isRequired,
-    }
-
-    render ()
-    {
-        return (
-            <div className="hn-fade">
-                <span><a href={this.props.url}>{this.props.title}</a></span>
-                by <span>{this.props.by}</span>
-                @ <span>{this.props.time}</span>
-                <span>[{this.props.score}]</span>
-                <span>Comments {this.props.descendants}</span>
-            </div>
-        );
-    }
-}
-
-class List extends Component {
-
-    static propTypes = {
-        items: PropTypes.array.isRequired,
-    }
-
-    render ()
-    {
-        return (
-            <div>{this.renderItems()}</div>
-        );
-    }
-
-    renderItems ()
-    {
-        return this.props.items.map(item => {
-            return <Item key={item.id} {...item} />
-        });
-    }
-}
+import List from "./List";
 
 class Application extends Component {
 
@@ -72,7 +26,9 @@ class Application extends Component {
         return (
             <main className="hn-main">
                 <Header />
-                <Counter count={this.props.count} onIncClick={e => dispatch(incItem()) } />
+                <Counter
+                    count={this.props.count}
+                    onIncClick={e => dispatch(incItem()) } />
                 <List items={this.props.items} />
             </main>
         );
