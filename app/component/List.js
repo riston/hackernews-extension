@@ -12,7 +12,9 @@ export default class List extends Component {
     render ()
     {
         return (
-            <div>{this.renderItems()}</div>
+            <div className="hn-list">
+                {this.renderItems()}
+            </div>
         );
     }
 

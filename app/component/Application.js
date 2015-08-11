@@ -26,10 +26,10 @@ class Application extends Component {
         return (
             <main className="hn-main">
                 <Header />
+                <List items={this.props.items} />
                 <Counter
                     count={this.props.count}
                     onIncClick={e => dispatch(incItem()) } />
-                <List items={this.props.items} />
             </main>
         );
     }

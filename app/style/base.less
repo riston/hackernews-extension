@@ -1,5 +1,35 @@
 
-.hn-main {
+h1 {
+    font-size: 1em;
+}
 
+header {
+    display: flex;
+    align-items: baseline;
     font-weight: bold;
+
+    section {
+
+        flex: 1;
+
+        &:first-child {
+            flex-grow: 2;
+        }
+
+        &:last-child {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}
+
+#container {
+    display: flex;
+    flex: 1;
+
+    height: 100vh;
+    width: 100vh;
+}
+
+.hn-main {
 }

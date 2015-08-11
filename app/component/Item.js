@@ -1,5 +1,9 @@
 
+import "../style/item.less";
+import "../style/badge.less";
+
 import React, {Component, PropTypes} from "react";
+import moment from "moment";
 
 export default class Item extends Component {
 
@@ -15,13 +19,17 @@ export default class Item extends Component {
 
     render ()
     {
+        let timeFromNow = moment(this.props.time * 1e3).fromNow();
+
         return (
-            <div>
+            <div className="hn-item">
+                <span className="hn-badge">{this.props.score}</span>
                 <span><a href={this.props.url}>{this.props.title}</a></span>
-                by <span>{this.props.by}</span>
-                @ <span>{this.props.time}</span>
-                <span>[{this.props.score}]</span>
-                <span>Comments {this.props.descendants}</span>
+                <span>&nbsp;({this.props.descendants}) </span>
+                <div className="sub">
+                    <span>&ndash; by {this.props.by}</span>
+                    <span>{timeFromNow}</span>
+                </div>
             </div>
         );
     }
