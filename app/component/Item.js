@@ -32,7 +32,7 @@ export default class Item extends Component {
                 <div className="text">
                     <Badge score={this.props.score} />
                     <span className="title">
-                        <a href={this.props.url}>{this.props.title}</a>
+                        <a href={this.props.url} target="_blank">{this.props.title}</a>
                         <span className="comment-count">&nbsp;({this.props.descendants}) </span>
                     </span>
                 </div>
