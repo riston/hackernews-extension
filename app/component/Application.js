@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {incItem} from "../Action";
 
 import Header from "./Header";
+import Footer from "./Footer";
 import Counter from "./Counter";
 import List from "./List";
 
@@ -27,9 +28,7 @@ class Application extends Component {
             <main className="hn-main">
                 <Header />
                 <List items={this.props.items} />
-                <Counter
-                    count={this.props.count}
-                    onIncClick={e => dispatch(incItem()) } />
+                <Footer />
             </main>
         );
     }

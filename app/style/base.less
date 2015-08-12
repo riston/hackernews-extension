@@ -1,4 +1,8 @@
 
+body, html {
+    background-color: #DFDFDF;
+}
+
 h1 {
     font-size: 1em;
 }
@@ -7,6 +11,7 @@ header {
     display: flex;
     align-items: baseline;
     font-weight: bold;
+    background-color: #DFDFDF;
 
     section {
 
@@ -14,6 +19,7 @@ header {
 
         &:first-child {
             flex-grow: 2;
+            padding: 0.2em 0 0.2em 0.5em;
         }
 
         &:last-child {
@@ -24,12 +30,13 @@ header {
 }
 
 #container {
-    display: flex;
-    flex: 1;
-
-    height: 100vh;
-    width: 100vh;
 }
 
 .hn-main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    height: 100vh;
+    width: 100vw;
 }

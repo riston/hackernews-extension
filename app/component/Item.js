@@ -1,9 +1,10 @@
 
 import "../style/item.less";
-import "../style/badge.less";
 
 import React, {Component, PropTypes} from "react";
 import moment from "moment";
+
+import Badge from "./Badge";
 
 export default class Item extends Component {
 
@@ -17,18 +18,27 @@ export default class Item extends Component {
         descendants: PropTypes.number.isRequired,
     }
 
+    static defaultProps = {
+        score: 0,
+        title: "No news title",
+    }
+
     render ()
     {
         let timeFromNow = moment(this.props.time * 1e3).fromNow();
 
         return (
             <div className="hn-item">
-                <span className="hn-badge">{this.props.score}</span>
-                <span><a href={this.props.url}>{this.props.title}</a></span>
-                <span>&nbsp;({this.props.descendants}) </span>
+                <div className="text">
+                    <Badge score={this.props.score} />
+                    <span className="title">
+                        <a href={this.props.url}>{this.props.title}</a>
+                        <span className="comment-count">&nbsp;({this.props.descendants}) </span>
+                    </span>
+                </div>
                 <div className="sub">
                     <span>&ndash; by {this.props.by}</span>
-                    <span>{timeFromNow}</span>
+                    <span>&nbsp;{timeFromNow}</span>
                 </div>
             </div>
         );

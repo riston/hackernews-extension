@@ -1,4 +1,5 @@
 
+import "../style/list.less";
 import React, {Component, PropTypes} from "react";
 
 import Item from "./Item";
