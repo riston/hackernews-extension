@@ -14,11 +14,11 @@ export default class Application extends Component {
         let defaultColor = "#993366";
 
         let colorMap = {
-            "#404040": { min: 0, max: 50 },
-            "#7BC8A4": { min: 51, max: 100 },
-            "#4CC3D9": { min: 101, max: 200 },
-            "#FFC65D": { min: 201, max: 300 },
-            "#F16745": { min: 301, max: 400 },
+            "#FF7C00": { min: 0, max: 50 },
+            "#CD6400": { min: 51, max: 100 },
+            "#3D60D2": { min: 101, max: 200 },
+            "#07268B": { min: 201, max: 300 },
+            "#009B22": { min: 301, max: 400 },
         };
 
         Object.keys(colorMap).forEach(color => {
@@ -30,27 +30,6 @@ export default class Application extends Component {
                 defaultColor = color;
             }
         });
-
-        // // Example score ranges
-        // // < 10       => #404040
-        // // 10 - 30    => #7BC8A4
-        // // 30 - 50    => #4CC3D9
-        // // 50 - 100   => #FFC65D
-        // // > 100      => #F16745
-        // if (this._between(0, 10))
-        // {
-        //     return "#404040";
-        // }
-
-        // if (this._between(10, 30))
-        // {
-        //     return "#FFC65D";
-        // }
-
-        // if (this._between(30, 50))
-        // {
-        //     return "#4CC3D9";
-        // }
 
         return defaultColor;
     }

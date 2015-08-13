@@ -11,11 +11,22 @@ import HNFirebase from "./HNFirebase";
 import {addItem} from "./Action";
 import Application from "./component/Application";
 
+// Read the initial state from local storage
+let cacheState = {
+    count: 15,
+    items: { },
+    comments: { },
+};
+
+// try {
+//     cacheState = JSON.parse(localStorage.getItem("state"));
+// }
+// catch (e) {
+//     console.error("Could not parse the initial state");
+// }
+
 const initState = {
-    App: Immutable.fromJS({
-        count: 15,
-        items: { },
-    })
+    App: Immutable.fromJS(cacheState)
 };
 
 // Base url for the HN API

@@ -2,7 +2,7 @@
 import Firebase from "firebase";
 import {EventEmitter} from "events";
 
-const ITEM_LIMIT = 10;
+const ITEM_LIMIT = 25;
 
 export default class HNFirebase extends EventEmitter {
 

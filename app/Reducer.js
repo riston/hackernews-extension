@@ -14,6 +14,12 @@ export function App (state = defaultState, action)
     {
     case ADD_ITEM:
         console.log(action);
+
+        // TODO: Needs better design for this
+        // localStorage is using sync methods, with larger data set
+        // this could slow down the UI rendering
+        localStorage.setItem("state", JSON.stringify(state));
+
         return state.mergeIn(["items", action.item.id], action.item);
 
     case INC_COUNT:

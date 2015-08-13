@@ -9,7 +9,7 @@ export default class Header extends Component {
     {
         return (
             <footer className="hn-footer">
-                <p>&copy; {new Date().getFullYear()} Risto</p>
+                <div>&copy; {new Date().getFullYear()} Risto</div>
             </footer>
         );
     }

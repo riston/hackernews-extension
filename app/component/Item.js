@@ -21,6 +21,7 @@ export default class Item extends Component {
     static defaultProps = {
         score: 0,
         title: "No news title",
+        descendants: [],
     }
 
     render ()

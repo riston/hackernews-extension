@@ -11,6 +11,11 @@
     "default_icon": "public/image/icon.png",
     "default_popup": "dist/index.html"
   },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/"
