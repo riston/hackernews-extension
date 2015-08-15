@@ -1,6 +1,6 @@
 
 import Immutable from "immutable";
-import { ADD_ITEM, INC_COUNT } from "./Action"
+import { ADD_ITEM, INC_COUNT, LOAD_ITEMS } from "./Action";
 
 // Initial state
 const defaultState = Immutable.fromJS({
@@ -13,14 +13,12 @@ export function App (state = defaultState, action)
     switch (action.type)
     {
     case ADD_ITEM:
-        console.log(action);
-
-        // TODO: Needs better design for this
-        // localStorage is using sync methods, with larger data set
-        // this could slow down the UI rendering
-        localStorage.setItem("state", JSON.stringify(state));
 
         return state.mergeIn(["items", action.item.id], action.item);
+
+    case LOAD_ITEMS:
+
+        return state.mergeIn(["items"], action.items);
 
     case INC_COUNT:
         return state.updateIn(["count"], x => x + 1);

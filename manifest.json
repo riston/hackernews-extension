@@ -13,11 +13,13 @@
   },
 
   "background": {
-    "scripts": ["background.js"]
+    "page": "background.html"
   },
 
   "permissions": [
     "activeTab",
+    "storage",
+    "background",
     "https://ajax.googleapis.com/"
   ]
 }
