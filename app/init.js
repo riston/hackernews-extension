@@ -18,13 +18,6 @@ let cacheState = {
     comments: { },
 };
 
-// try {
-//     cacheState = JSON.parse(localStorage.getItem("state"));
-// }
-// catch (e) {
-//     console.error("Could not parse the initial state");
-// }
-
 const initState = {
     App: Immutable.fromJS(cacheState)
 };
@@ -40,9 +33,9 @@ const store = createStoreWithMiddleware(reducer, initState);
 if (chrome && chrome.storage && chrome.storage.local)
 {
     // Initial load, get all items
-    chrome.storage.local.get(null, function (items)
+    chrome.storage.local.get(null, function (state)
     {
-        store.dispatch(loadItems(items));
+        store.dispatch(loadItems(state.App.items));
     });
 
     // Listen for changes in storage
@@ -53,10 +46,10 @@ if (chrome && chrome.storage && chrome.storage.local)
 
             var change = changes[key];
 
-            store.dispatch(addItem(change.newValue));
+            store.dispatch(loadItems(change.newValue.items));
 
             console.log("Storage key '%s' in namespace '%s' changed. " +
-                "Old value was '%s', new value is '%s'.",
+                "[old, new]",
                 key,
                 namespace,
                 change.oldValue,
@@ -64,15 +57,6 @@ if (chrome && chrome.storage && chrome.storage.local)
         }
     });
 }
-
-// debugger;
-// HackerNews firebase API
-// let fireRef = new HNFirebase(NEWS_URL);
-// fireRef.addListeners();
-// fireRef.on("item", item =>
-// {
-//     store.dispatch(addItem(item));
-// });
 
 let containerEl = document.getElementById("container");
 
