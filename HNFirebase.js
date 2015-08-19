@@ -64,7 +64,7 @@ HNFirebase.prototype.onValue = function (snapshot)
     // Generate promises
     var promises = itemIDs.map(function (itemID)
     {
-        return this.getNewsItem(itemID);
+        return this.getItemByID(itemID);
     }.bind(this));
 
     // When all the requests are done
@@ -77,7 +77,7 @@ HNFirebase.prototype.onChildAdd = function (snapshot, prevChildKey)
 {
     console.log("[FIRE] Added", snapshot.val(), prevChildKey);
 
-    this.getNewsItem(snapshot.val())
+    this.getItemByID(snapshot.val())
         .then(this.onNewItem.bind(this));
 };
 
@@ -85,7 +85,7 @@ HNFirebase.prototype.onChildChange = function (childSnapshot, prevChildKey)
 {
     console.log("[FIRE] Child change", childSnapshot.val(), prevChildKey);
 
-    this.getNewsItem(childSnapshot.val())
+    this.getItemByID(childSnapshot.val())
         .then(this.onNewItem.bind(this));
 };
 
@@ -109,7 +109,7 @@ HNFirebase.prototype.defaultOnInit = function ()
     console.log("[FIRE] Default init load action");
 };
 
-HNFirebase.prototype.getNewsItem = function (itemID)
+HNFirebase.prototype.getItemByID = function (itemID)
 {
     return new Promise(function (resolve)
     {
@@ -121,4 +121,21 @@ HNFirebase.prototype.getNewsItem = function (itemID)
                 return resolve(S.val());
             });
     }.bind(this));
+};
+
+HNFirebase.prototype.getComments = function (itemID) {
+
+    return this.getItemByID(itemID)
+        .then(function (item) {
+            var commentIDs = item.kids;
+
+            // Lets load only the first level comments
+            var commentPromises = commentIDs.map(function (currentItemID)
+            {
+                return this.getItemByID(currentItemID);
+            }, this);
+
+            // Return until all the promies are fulfilled
+            return Promise.all(commentPromises);
+        }.bind(this));
 };

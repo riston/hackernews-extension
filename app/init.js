@@ -10,12 +10,15 @@ import * as reducers from "./Reducer";
 import HNFirebase from "./HNFirebase";
 import {addItem, loadItems} from "./Action";
 import Application from "./component/Application";
+import TestData from "./test-data";
 
 // Read the initial state from local storage
 let cacheState = {
     count: 15,
-    items: { },
+    activeView: "default",
+    activeItemID: "10072188",
     comments: { },
+    items: TestData.items,
 };
 
 const initState = {
@@ -55,6 +58,15 @@ if (chrome && chrome.storage && chrome.storage.local)
                 change.oldValue,
                 change.newValue);
         }
+    });
+
+    var port = chrome.extension.connect({
+        name: "Background channel"
+    });
+
+    // Receive part
+    port.onMessage.addListener(function (msg) {
+        console.log("message recieved "+ msg);
     });
 }
 

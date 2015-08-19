@@ -1,7 +1,10 @@
 
 var port = chrome.extension.connect({
-    name: "Sample Communication"
+    name: "Background channel"
 });
+
+// Send the open event to background
+port.postMessage({ event: "popup-open" });
 
 // Receive part
 port.onMessage.addListener(function(msg) {
@@ -9,23 +12,5 @@ port.onMessage.addListener(function(msg) {
 });
 
 setInterval(function () {
-
     port.postMessage("Hi BackGround");
 }, 1e3);
-
-
-// chrome.storage.onChanged.addListener(function (changes, namespace) {
-
-//     var key;
-//     for (key in changes) {
-
-//         var change = changes[key];
-
-//         console.log('Storage key "%s" in namespace "%s" changed. ' +
-//                       'Old value was "%s", new value is "%s".',
-//                       key,
-//                       namespace,
-//                       change.oldValue,
-//                       change.newValue);
-//     };
-// });

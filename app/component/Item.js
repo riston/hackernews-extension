@@ -34,7 +34,10 @@ export default class Item extends Component {
                     <Badge score={this.props.score} />
                     <span className="title">
                         <a href={this.props.url} target="_blank">{this.props.title}</a>
-                        <span className="comment-count">&nbsp;({this.props.descendants}) </span>
+                        <button className="comment-count"
+                            data-action="comment-view"
+                            data-item-id={this.props.id}>{`(${this.props.descendants})`}
+                        </button>
                     </span>
                 </div>
                 <div className="sub">

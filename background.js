@@ -117,6 +117,26 @@ chrome.extension.onConnect.addListener(function (port)
             setBadge("");
             return;
         }
+        else if (msg.event === "load-comments")
+        {
+            if (!msg.itemID)
+            {
+                console.error("Could not load item comments ", msg.itemID);
+            }
+
+            // Trigger async load
+            hnFire.getComments(msg.itemID)
+                .then(function (comments) {
+
+                console.log("Loaded comments", comments);
+
+                port.postMessage({
+                    event: "loaded-comments",
+                    items: comments,
+                });
+            });
+            return;
+        }
 
         console.log("Unkown receive", msg);
     });
