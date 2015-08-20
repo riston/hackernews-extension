@@ -5,7 +5,8 @@ import I from "immutable";
 import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
 
-import {incItem, setView, setActiveItem} from "../Action";
+import {loadComments, setView, setActiveItem} from "../Action";
+import {loadCommentsExt} from "../ChromeExt";
 
 import Default from "./view/Default";
 import Comment from "./view/Comment";
@@ -19,8 +20,8 @@ class Application extends Component {
 
     static propTypes = {
         activeView: PropTypes.string.isRequired,
-        count: PropTypes.number.isRequired,
-        items: PropTypes.array.isRequired,
+        count:      PropTypes.number.isRequired,
+        items:      PropTypes.array.isRequired,
     }
 
     render ()
@@ -42,7 +43,9 @@ class Application extends Component {
         // TODO: Refactor the if statement
         if (view === "comment")
         {
-            return <Comment itemID={props.activeItemID} />
+            return <Comment
+                storyItem={props.activeItem}
+                comments={props.comments} />
         }
         else
         {
@@ -67,15 +70,17 @@ class Application extends Component {
             let itemID = dataset.itemId;
 
             // Could this be dispatched once ?
-            dispatch(setView("comment"))
-            dispatch(setActiveItem(itemID));
+            loadCommentsExt(itemID)
+                .then(comments =>
+                {
+                    dispatch(setView("comment"))
+                    dispatch(setActiveItem(itemID));
 
-            var port = chrome.extension.connect({
-                name: "Background channel"
-            });
-
-            // Send the open event to background
-            port.postMessage({ event: "load-comments", itemID: itemID });
+                    dispatch(loadComments(comments));
+                }).catch(e =>
+                {
+                    console.error("Failed to load comments ", itemID, e);
+                })
         }
         else
         {
@@ -88,11 +93,16 @@ class Application extends Component {
 // Note: use https://github.com/faassen/reselect for better performance.
 function select (state)
 {
+    let activeItemID = state.App.get("activeItemID");
+
     // TODO: Optimize the selection
     return {
+        activeItemID: activeItemID,
         activeView:   state.App.get("activeView"),
-        activeItemID: state.App.get("activeItemID"),
+        activeItem:   state.App.getIn(["items", activeItemID])
+            .toObject(),
         count:        state.App.get("count"),
+        comments:     state.App.get("comments"),
         items:        state.App.get("items")
             .toArray()
             .map(x => x.toObject()),

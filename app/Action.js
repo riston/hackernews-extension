@@ -3,10 +3,11 @@
  * Action types
  */
 
-export const ADD_ITEM = "ADD_ITEM";
-export const LOAD_ITEMS = "LOAD_ITEMS";
-export const INC_COUNT = "INC_COUNT";
-export const SET_VIEW = "SET_VIEW";
+export const ADD_ITEM        = "ADD_ITEM";
+export const LOAD_ITEMS      = "LOAD_ITEMS";
+export const LOAD_COMMENTS   = "LOAD_COMMENTS";
+export const INC_COUNT       = "INC_COUNT";
+export const SET_VIEW        = "SET_VIEW";
 export const SET_ACTIVE_ITEM = "SET_ACTIVE_ITEM";
 
 export function incItem ()
@@ -34,6 +35,17 @@ export function addItem (item)
 export function loadItems (items)
 {
     return { type: LOAD_ITEMS, items };
+}
+
+/**
+ * Load multiple comments.
+ *
+ * @param  {Object} comments
+ * @return {Object}
+ */
+export function loadComments (comments)
+{
+    return { type: LOAD_COMMENTS, comments };
 }
 
 /**

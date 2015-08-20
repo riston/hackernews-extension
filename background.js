@@ -34,6 +34,12 @@ var initializeDefaultValues = function ()
     });
 };
 
+// Depends currently on the firebase instance
+var loadComments = function (itemID)
+{
+    return hnFire.getComments(itemID);
+};
+
 initializeDefaultValues();
 
 // Create a instance
@@ -115,26 +121,6 @@ chrome.extension.onConnect.addListener(function (port)
         if (msg.event === "popup-open")
         {
             setBadge("");
-            return;
-        }
-        else if (msg.event === "load-comments")
-        {
-            if (!msg.itemID)
-            {
-                console.error("Could not load item comments ", msg.itemID);
-            }
-
-            // Trigger async load
-            hnFire.getComments(msg.itemID)
-                .then(function (comments) {
-
-                console.log("Loaded comments", comments);
-
-                port.postMessage({
-                    event: "loaded-comments",
-                    items: comments,
-                });
-            });
             return;
         }
 

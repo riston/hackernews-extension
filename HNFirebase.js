@@ -51,16 +51,6 @@ HNFirebase.prototype.onValue = function (snapshot)
         return;
     }
 
-    // Convert the array style into object
-    var arrayToObject = function (items)
-    {
-        return items.reduce(function (prev, item)
-        {
-            prev[item.id] = item;
-            return prev;
-        }, {});
-    };
-
     // Generate promises
     var promises = itemIDs.map(function (itemID)
     {
@@ -69,7 +59,7 @@ HNFirebase.prototype.onValue = function (snapshot)
 
     // When all the requests are done
     return Promise.all(promises)
-        .then(arrayToObject)
+        .then(this._arrayToObject.bind(this))
         .then(this.onInitLoad.bind(this));
 };
 
@@ -123,19 +113,38 @@ HNFirebase.prototype.getItemByID = function (itemID)
     }.bind(this));
 };
 
-HNFirebase.prototype.getComments = function (itemID) {
+HNFirebase.prototype.getComments = function (itemID)
+{
+    var load = function (item)
+    {
+        var commentIDs = item.kids;
+
+        // Lets load only the first level comments
+        var commentPromises = commentIDs.map(function (currentItemID)
+        {
+            return this.getItemByID(currentItemID);
+        }, this);
+
+        // Return until all the promies are fulfilled
+        return Promise.all(commentPromises);
+    }.bind(this);
 
     return this.getItemByID(itemID)
-        .then(function (item) {
-            var commentIDs = item.kids;
+        .then(load)
+        .then(this._arrayToObject.bind(this));
+};
 
-            // Lets load only the first level comments
-            var commentPromises = commentIDs.map(function (currentItemID)
-            {
-                return this.getItemByID(currentItemID);
-            }, this);
-
-            // Return until all the promies are fulfilled
-            return Promise.all(commentPromises);
-        }.bind(this));
+/**
+ * Transform the array into object.
+ *
+ * @param  {Array} array Make sure the array items has the 'id' property.
+ * @return {Object}
+ */
+HNFirebase.prototype._arrayToObject = function (array)
+{
+    return array.reduce(function (prev, item)
+    {
+        prev[item.id] = item;
+        return prev;
+    }, {});
 };

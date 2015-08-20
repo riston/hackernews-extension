@@ -6,14 +6,17 @@ import List from "../List";
 export default class Comment extends Component {
 
     static propTypes = {
-        itemID: PropTypes.string.isRequired
+        storyItem: PropTypes.object.isRequired,
+        comments:  PropTypes.array.isRequired,
     }
 
     render ()
     {
+        debugger;
+        let items = [].concat([this.props.storyItem], this.props.comments);
 
         return (
-            <div>Display the comments for item {this.props.itemID}</div>
+            <List items={items} />
         );
     }
 }

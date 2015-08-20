@@ -1,6 +1,6 @@
 
 import Immutable from "immutable";
-import { ADD_ITEM, INC_COUNT, LOAD_ITEMS, SET_VIEW, SET_ACTIVE_ITEM } from "./Action";
+import * as Action from "./Action";
 
 // Initial state
 const defaultState = Immutable.fromJS({
@@ -12,23 +12,27 @@ export function App (state = defaultState, action)
 {
     switch (action.type)
     {
-    case ADD_ITEM:
+    case Action.ADD_ITEM:
 
         return state.mergeIn(["items", action.item.id], action.item);
 
-    case LOAD_ITEMS:
+    case Action.LOAD_ITEMS:
 
         return state.mergeIn(["items"], action.items);
 
-    case SET_VIEW:
+    case Action.LOAD_COMMENTS:
+
+        return state.mergeIn(["comments"], action.comments);
+
+    case Action.SET_VIEW:
 
         return state.set("activeView", action.view || "default");
 
-    case SET_ACTIVE_ITEM:
+    case Action.SET_ACTIVE_ITEM:
 
         return state.set("activeItemID", action.itemID);
 
-    case INC_COUNT:
+    case Action.INC_COUNT:
         return state.updateIn(["count"], x => x + 1);
 
     default:

@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import * as reducers from "./Reducer";
 
-import HNFirebase from "./HNFirebase";
 import {addItem, loadItems} from "./Action";
 import Application from "./component/Application";
 import TestData from "./test-data";
@@ -58,15 +57,6 @@ if (chrome && chrome.storage && chrome.storage.local)
                 change.oldValue,
                 change.newValue);
         }
-    });
-
-    var port = chrome.extension.connect({
-        name: "Background channel"
-    });
-
-    // Receive part
-    port.onMessage.addListener(function (msg) {
-        console.log("message recieved "+ msg);
     });
 }
 
