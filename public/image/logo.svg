@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   id="svg7268"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs7270" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="-129.50855"
+     inkscape:cy="143.05857"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     showguides="true"
+     borderlayer="false"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1041"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid11210"
+       dotted="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7273">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-924.36216)">
+    <rect
+       style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:2.41700006;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect11208"
+       width="120"
+       height="116.16754"
+       x="5"
+       y="931.19464"
+       rx="26.295128" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.02464104px;line-height:125%;font-family:Clean;-inkscape-font-specification:Clean;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="19.784525"
+       y="813.55914"
+       id="text12012"
+       sodipodi:linespacing="125%"
+       transform="scale(0.79607674,1.2561603)"><tspan
+         sodipodi:role="line"
+         id="tspan12014"
+         x="19.784525"
+         y="813.55914"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:78.5100174px;font-family:'Bookman URW';-inkscape-font-specification:'Bookman URW Bold';fill:#ffffff;fill-opacity:1">H</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.02464104px;line-height:125%;font-family:Clean;-inkscape-font-specification:Clean;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="83.848701"
+       y="813.79767"
+       id="text12012-3"
+       sodipodi:linespacing="125%"
+       transform="scale(0.79607674,1.2561603)"><tspan
+         sodipodi:role="line"
+         id="tspan12014-3"
+         x="83.848701"
+         y="813.79767"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:78.5100174px;font-family:'Bookman URW';-inkscape-font-specification:'Bookman URW Bold';fill:#ffffff;fill-opacity:1">N</tspan><tspan
+         sodipodi:role="line"
+         x="83.848701"
+         y="911.93518"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:78.5100174px;font-family:'Bookman URW';-inkscape-font-specification:'Bookman URW Bold';fill:#ffffff;fill-opacity:1"
+         id="tspan12034" /></text>
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.41700006;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect12051"
+       width="89.8013"
+       height="5"
+       x="17"
+       y="1023.9335" />
+  </g>
+</svg>
