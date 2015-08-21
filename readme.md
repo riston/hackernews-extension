@@ -1,6 +1,8 @@
 
 # HackerNews Chrome Extension
 
+![Screen](https://raw.githubusercontent.com/riston/hackernews-extension/master/doc/front-screen.png)
+
 ## Install
 
 `npm install`
