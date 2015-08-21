@@ -4,7 +4,10 @@ import * as Action from "./Action";
 
 // Initial state
 const defaultState = Immutable.fromJS({
-    count : 10,
+    count: 1,
+    activeView: "default",
+    activeItemID: "10072188",
+    comments: { },
     items: { }
 });
 

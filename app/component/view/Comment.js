@@ -12,7 +12,8 @@ export default class Comment extends Component {
 
     render ()
     {
-        debugger;
+        console.log("Comments", this.props.comments, "Item", this.props.storyItem);
+
         let items = [].concat([this.props.storyItem], this.props.comments);
 
         return (

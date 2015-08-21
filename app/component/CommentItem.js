@@ -7,30 +7,33 @@ import moment from "moment";
 export default class CommentItem extends Component {
 
     static propTypes = {
-        id:          PropTypes.number.isRequired,
-        title:       PropTypes.string.isRequired,
-        time:        PropTypes.number.isRequired,
-        by:          PropTypes.string.isRequired,
-        score:       PropTypes.number.isRequired,
-        descendants: PropTypes.number,
+        id:     PropTypes.number.isRequired,
+        text:   PropTypes.string.isRequired,
+        type:   PropTypes.string.isRequired,
+        time:   PropTypes.number.isRequired,
+        by:     PropTypes.string.isRequired,
+        parent: PropTypes.number.isRequired,
+        kids:   PropTypes.array.isRequired,
     }
 
-    // static defaultProps = {
-    //     score: 0,
-    //     title: "No news title",
-    //     descendants: [],
-    // }
+    static defaultProps = {
+        text: "No comments text added",
+        by:   "Unkown",
+        kids: [],
+    }
 
     render ()
     {
         let timeFromNow = moment(this.props.time * 1e3).fromNow();
 
+        // TODO: Make sure to add DOMPurify module to clean the comments text
+        // before, currently using direct html render which is not XSS safe
         return (
             <div className="hn-item">
                 <div className="text">
-                    <span className="title">
-                        {this.props.title}
-                    </span>
+                    <span className="title"
+                        dangerouslySetInnerHTML={{ __html: this.props.text }} />
+                    <span>{this.props.kids.length}</span>
                 </div>
                 <div className="sub">
                     <span>&ndash; by {this.props.by}</span>

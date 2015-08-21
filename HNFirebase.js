@@ -12,9 +12,6 @@ var HNFirebase = function (baseURL)
 
 HNFirebase.prototype.addListeners = function ()
 {
-    // TODO: make the component more loose coupled, currently
-    // the 'chrome' object is tight coupled
-
     // Reads entire content of Firebase database reference,
     // even if only single item has changed
     this.newsRef

@@ -102,7 +102,8 @@ function select (state)
         activeItem:   state.App.getIn(["items", activeItemID])
             .toObject(),
         count:        state.App.get("count"),
-        comments:     state.App.get("comments"),
+        comments:     state.App.get("comments")
+            .toArray(),
         items:        state.App.get("items")
             .toArray()
             .map(x => x.toObject()),

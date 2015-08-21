@@ -1,4 +1,5 @@
 
+// Change the current badge
 var setBadge = function (text)
 {
     // Add badge
