@@ -13,11 +13,11 @@ import TestData from "./test-data";
 
 // Read the initial state from local storage
 let cacheState = {
-    count: 15,
-    activeView: "default",
-    activeItemID: "10072188",
-    comments: { },
-    items: TestData.items,
+    count:        15,
+    activeView:   "comment",
+    activeItemID: "11" || "10072188",
+    comments:     TestData.my.comments || TestData.comments,
+    items:        TestData.my.items || TestData.items,
 };
 
 const initState = {

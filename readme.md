@@ -13,6 +13,14 @@
 
 ## TODO (Includes general tasks)
 
+  - Prepare deploy script (Grunt or Gulp task) for zipping files.
+
+  - Development, webpack auto watch for changes made and update the extension in Google Chrome.
+
+  - The extension should remember the last selected item if your in comments view.
+
+  - The story items order is currently exactly the same as in web page.
+
   - Release the extension in store after the comment's view is implemented.
 
   - Comment view should have the story as the top item and display only the first level comments.

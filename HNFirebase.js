@@ -114,7 +114,7 @@ HNFirebase.prototype.getComments = function (itemID)
 {
     var load = function (item)
     {
-        var commentIDs = item.kids;
+        var commentIDs = item.kids || [];
 
         // Lets load only the first level comments
         var commentPromises = commentIDs.map(function (currentItemID)

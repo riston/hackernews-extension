@@ -2,10 +2,11 @@
 import "../style/base.less";
 
 import I from "immutable";
+import R from "ramda";
 import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
 
-import {loadComments, setView, setActiveItem} from "../Action";
+import * as Action from "../Action";
 import {loadCommentsExt} from "../ChromeExt";
 
 import Default from "./view/Default";
@@ -63,29 +64,93 @@ class Application extends Component {
         if (action === "back")
         {
             console.log("Change the view to default");
-            dispatch(setView("default"));
+            dispatch(Action.setView("default"));
+            dispatch(Action.clearComments());
         }
         else if (action === "comment-view")
         {
-            let itemID = dataset.itemId;
+            this._onCommentView(dataset.itemId)
+        }
+        else if (action === "child-comments")
+        {
+            let commentIDs = [];
+            try {
+                commentIDs = JSON.parse(dataset.children);
+            }
+            catch (e) {
+                console.error("Invalid comment IDs input", e);
+            }
 
-            // Could this be dispatched once ?
-            loadCommentsExt(itemID)
-                .then(comments =>
-                {
-                    dispatch(setView("comment"))
-                    dispatch(setActiveItem(itemID));
-
-                    dispatch(loadComments(comments));
-                }).catch(e =>
-                {
-                    console.error("Failed to load comments ", itemID, e);
-                })
+            console.log("Load the child comments also", commentIDs);
+            this._loadChildComments(commentIDs);
         }
         else
         {
             console.log("Unhandled click on the component", action, e);
         }
+    }
+
+    _onCommentView (itemID)
+    {
+        const { dispatch } = this.props;
+
+        // Could this be dispatched once ?
+        loadCommentsExt(itemID)
+            .then(comments =>
+            {
+                dispatch(Action.setView("comment"))
+                dispatch(Action.setActiveItem(itemID));
+
+                // Could not convert the object into immutable data structure,
+                // because of the different context "created in background"
+                // https://github.com/facebook/immutable-js/pull/452
+                let action = R.compose(Action.loadComments, I.fromJS, R.clone);
+                dispatch(action(comments));
+
+                // dispatch(Action.loadComments(I.fromJS(R.clone(comments))));
+            }.bind(this))
+            .catch(e =>
+            {
+                console.error("Failed to load comments ", itemID, e);
+            })
+    }
+
+    _loadChildComments (commentIDs)
+    {
+        const { dispatch } = this.props;
+
+        // This needs optimization
+        if (!Array.isArray(commentIDs))
+        {
+            console.error("Comment IDs must be array");
+            return;
+        }
+
+        let commentPromises = commentIDs.map(id => {
+            return loadCommentsExt(id);
+        });
+
+        Promise.all(commentPromises)
+            .then(comments =>
+            {
+                // TODO: Refactor this into util function, transform array into object
+                var commentObj = comments.reduce((prev, current) =>
+                {
+                    Object.keys(current).forEach(commentID =>
+                    {
+                        prev[commentID] = current[commentID];
+                    });
+
+                    return prev;
+                }, {});
+
+                let action = R.compose(Action.loadComments, I.fromJS, R.clone);
+                dispatch(action(commentObj));
+            })
+            .catch(e =>
+            {
+                console.error("Could not load child comments", e);
+            });
     }
 }
 
@@ -95,18 +160,28 @@ function select (state)
 {
     let activeItemID = state.App.get("activeItemID");
 
+    let byTime = function (x) { return x.get("time"); };
+
+    let byParent = function (x) { return x.get("parent"); };
+
     // TODO: Optimize the selection
     return {
         activeItemID: activeItemID,
         activeView:   state.App.get("activeView"),
         activeItem:   state.App.getIn(["items", activeItemID])
-            .toObject(),
+            .toJS(),
         count:        state.App.get("count"),
         comments:     state.App.get("comments")
-            .toArray(),
-        items:        state.App.get("items")
+            .sortBy(byTime)
+            .reverse()
+            // .groupBy(byParent)
             .toArray()
-            .map(x => x.toObject()),
+            .map(x => x.toJS()),
+        items:        state.App.get("items")
+            .sortBy(byTime)
+            .reverse()
+            .toArray()
+            .map(x => x.toJS()),
     };
 }
 

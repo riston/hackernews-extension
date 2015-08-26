@@ -25,17 +25,25 @@ export default class CommentItem extends Component {
     render ()
     {
         let timeFromNow = moment(this.props.time * 1e3).fromNow();
+        let moreButton;
+
+        if (this.props.kids.length > 0)
+        {
+            moreButton = <a href={ "#" + this.props.id}
+                data-action="child-comments"
+                data-children={JSON.stringify(this.props.kids)}>More</a>;
+        }
 
         // TODO: Make sure to add DOMPurify module to clean the comments text
         // before, currently using direct html render which is not XSS safe
         return (
-            <div className="hn-item">
+            <div className="hn-item hn-comment">
                 <div className="text">
                     <span className="title"
                         dangerouslySetInnerHTML={{ __html: this.props.text }} />
-                    <span>{this.props.kids.length}</span>
                 </div>
                 <div className="sub">
+                    {moreButton}
                     <span>&ndash; by {this.props.by}</span>
                     <span>&nbsp;{timeFromNow}</span>
                 </div>

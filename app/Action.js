@@ -6,6 +6,7 @@
 export const ADD_ITEM        = "ADD_ITEM";
 export const LOAD_ITEMS      = "LOAD_ITEMS";
 export const LOAD_COMMENTS   = "LOAD_COMMENTS";
+export const CLEAR_COMMENTS  = "CLEAR_COMMENTS";
 export const INC_COUNT       = "INC_COUNT";
 export const SET_VIEW        = "SET_VIEW";
 export const SET_ACTIVE_ITEM = "SET_ACTIVE_ITEM";
@@ -49,10 +50,19 @@ export function loadComments (comments)
 }
 
 /**
+ * Clear comments
+ * @return {Object}
+ */
+export function clearComments ()
+{
+    return { type: CLEAR_COMMENTS };
+}
+
+/**
  * Set the application current view
  *
  * @param  {string} view
- * @retrun {Object}
+ * @return {Object}
  */
 export function setView (view)
 {

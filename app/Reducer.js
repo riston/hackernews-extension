@@ -27,6 +27,10 @@ export function App (state = defaultState, action)
 
         return state.mergeIn(["comments"], action.comments);
 
+    case Action.CLEAR_COMMENTS:
+
+        return state.set("comments", Immutable.Map({}));
+
     case Action.SET_VIEW:
 
         return state.set("activeView", action.view || "default");

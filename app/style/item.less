@@ -35,9 +35,19 @@
     .sub {
         display: flex;
         justify-content: flex-end;
+        align-items: baseline;
 
         font-style: italic;
         font-size: 0.7em;
+
+        a {
+            color: #A00D0D;
+            font-size: 1.2em;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     a {
@@ -48,5 +58,12 @@
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.hn-comment {
+
+    &:hover {
+        background-color: #FFF;
     }
 }
