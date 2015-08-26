@@ -11,6 +11,7 @@ import {loadCommentsExt} from "../ChromeExt";
 
 import Default from "./view/Default";
 import Comment from "./view/Comment";
+import Setting from "./view/Setting";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -48,6 +49,10 @@ class Application extends Component {
                 storyItem={props.activeItem}
                 comments={props.comments} />
         }
+        else if (view === "setting")
+        {
+            return <Setting />
+        }
         else
         {
             return <Default items={props.items} />
@@ -70,6 +75,10 @@ class Application extends Component {
         else if (action === "comment-view")
         {
             this._onCommentView(dataset.itemId)
+        }
+        else if (action === "setting-view")
+        {
+            dispatch(Action.setView("setting"));
         }
         else if (action === "child-comments")
         {

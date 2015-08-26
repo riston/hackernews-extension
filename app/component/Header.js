@@ -16,7 +16,7 @@ export default class Header extends Component {
                 <section>
                     <MenuButton icon="fa-arrow-left" action="back" />
                     <MenuButton icon="fa-refresh" action="refresh-list" />
-                    <MenuButton icon="fa-cog" action="open-settings" />
+                    <MenuButton icon="fa-cog" action="setting-view" />
                 </section>
             </header>
         );
