@@ -41,6 +41,11 @@ var loadComments = function (itemID)
     return hnFire.getComments(itemID);
 };
 
+var getItemByID = function (itemID)
+{
+    return hnFire.getItemByID(itemID);
+};
+
 initializeDefaultValues();
 
 // Create a instance

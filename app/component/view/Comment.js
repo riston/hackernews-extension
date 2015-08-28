@@ -30,6 +30,7 @@ export default class Comment extends Component {
             let id = stack.shift();
             let item = R.find(R.propEq("id", id))(items);
 
+            // No item found
             if (!item)
             {
                 continue;

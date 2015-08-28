@@ -7,7 +7,7 @@ import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
 
 import * as Action from "../Action";
-import {loadCommentsExt} from "../ChromeExt";
+import {loadCommentsExt, loadItemByIDExt} from "../ChromeExt";
 
 import Default from "./view/Default";
 import Comment from "./view/Comment";
@@ -135,21 +135,15 @@ class Application extends Component {
             return;
         }
 
-        let commentPromises = commentIDs.map(id => {
-            return loadCommentsExt(id);
-        });
+
+        let commentPromises = commentIDs.map(id => loadItemByIDExt(id));
 
         Promise.all(commentPromises)
             .then(comments =>
             {
-                // TODO: Refactor this into util function, transform array into object
                 var commentObj = comments.reduce((prev, current) =>
                 {
-                    Object.keys(current).forEach(commentID =>
-                    {
-                        prev[commentID] = current[commentID];
-                    });
-
+                    prev[current.id] = current;
                     return prev;
                 }, {});
 

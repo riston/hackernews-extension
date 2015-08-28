@@ -16,6 +16,25 @@ export function loadCommentsExt (itemID)
         return Promise.reject(new Error("Not in the Chrome context, could not load comments"));
     }
 
-    var bckInstance = chrome.extension.getBackgroundPage();
-    return bckInstance.loadComments(itemID);
+    return chrome.extension.getBackgroundPage()
+        .loadComments(itemID);
+}
+
+/**
+ * Load item using the background script.
+ *
+ * @method loadItemByIDExt
+ * @param  {String} itemID
+ * @return {Promise}
+ */
+export function loadItemByIDExt (itemID)
+{
+    // Check for the chrome context
+    if (!chrome || !chrome.extension || !chrome.extension.getBackgroundPage)
+    {
+        return Promise.reject(new Error("Not in the Chrome context, could not load item"));
+    }
+
+    return chrome.extension.getBackgroundPage()
+        .getItemByID(itemID);
 }
