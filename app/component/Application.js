@@ -116,7 +116,6 @@ class Application extends Component {
                 let action = R.compose(Action.loadComments, I.fromJS, R.clone);
                 dispatch(action(comments));
 
-                // dispatch(Action.loadComments(I.fromJS(R.clone(comments))));
             }.bind(this))
             .catch(e =>
             {

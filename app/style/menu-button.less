@@ -1,4 +1,6 @@
 
+@import "animation-pulse";
+
 .hn-button {
 
     border: 0;
@@ -6,4 +8,12 @@
     background-color: #DFDFDF;
 
     color: #767676;
+
+    &:hover {
+        animation-name: pulse;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+    }
 }

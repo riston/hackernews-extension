@@ -1,4 +1,7 @@
 
+// Variables
+@comment-count: #A00D0D;
+
 .hn-item {
 
     padding: 0.2em;
@@ -19,12 +22,16 @@
     .comment-count {
         border: none;
         background-color: transparent;
-        color: #A00D0D;
+        color: @comment-count;
         cursor: pointer;
         font-weight: 600;
 
         &:focus {
             outline: 0;
+        }
+
+        &:hover {
+            color: darken(@comment-count, 10%);
         }
     }
 
