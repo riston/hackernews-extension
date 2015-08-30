@@ -32,6 +32,7 @@
 
         &:hover {
             color: darken(@comment-count, 10%);
+            text-decoration: underline;
         }
     }
 
@@ -79,5 +80,14 @@
 
     &:hover {
         background-color: #FFF;
+    }
+}
+
+.deleted {
+
+    opacity: 0.6;
+
+    .title {
+        text-decoration: line-through;
     }
 }

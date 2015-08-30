@@ -14,6 +14,7 @@ module.exports =
                 id:          11,
                 kids:        [21, 22, 23],
                 type:        "story",
+                deleted:     true,
                 title:       "This is the test story item",
                 url:         "https://google.com",
                 time:        Date.now(),
@@ -41,6 +42,7 @@ module.exports =
                 text: "Side text of child",
                 parent: 31,
                 time: Date.now() + 3e3,
+                deleted: true,
                 by: "Frikal",
             },
 
