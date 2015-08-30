@@ -1,5 +1,4 @@
 
-
 import React, {Component, PropTypes} from "react";
 
 import MenuButton from "./MenuButton";
@@ -14,7 +13,8 @@ export default class Header extends Component {
                     <h1>HackerNews application</h1>
                 </section>
                 <section>
-                    <MenuButton icon="fa-arrow-left" action="back" className="pulse" />
+                    {this.props.activeView !== "default" ?
+                        <MenuButton icon="fa-arrow-left" action="back" className="pulse" /> : null }
                     <MenuButton icon="fa-refresh" action="refresh-list" />
                     <MenuButton icon="fa-cog" action="setting-view" />
                 </section>

@@ -3,6 +3,7 @@ import "../style/list.less";
 import React, {Component, PropTypes} from "react";
 
 import Item from "./Item";
+// import ScrollWrapper from "./ScrollWrapper";
 
 export default class List extends Component {
 

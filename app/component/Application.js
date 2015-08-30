@@ -33,7 +33,7 @@ class Application extends Component {
 
         return (
             <main className="hn-main" onClick={this._onClick.bind(this)}>
-                <Header />
+                <Header activeView={activeView} />
                 {this.renderView(activeView, this.props)}
                 <Footer />
             </main>
