@@ -3,7 +3,7 @@
 
   "name": "HackerNews reader",
   "description": "",
-  "version": "1.0",
+  "version": "1.1",
 
   "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com; object-src 'self'",
 
@@ -25,7 +25,6 @@
   "permissions": [
     "activeTab",
     "storage",
-    "background",
-    "https://ajax.googleapis.com/"
+    "background"
   ]
 }
