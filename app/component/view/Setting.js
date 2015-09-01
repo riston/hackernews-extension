@@ -1,4 +1,6 @@
 
+import "../../style/settings.less";
+
 import React, {Component, PropTypes} from "react";
 
 export default class Setting extends Component {
@@ -8,9 +10,8 @@ export default class Setting extends Component {
 
     render ()
     {
-        return <div>
-            <h2>Setting page</h2>
-            <p>Currently there is not much information here.</p>
+        return <div className="hn-settings">
+            <p>Currently there are no user settings.</p>
         </div>;
     }
 }

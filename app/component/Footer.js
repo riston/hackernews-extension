@@ -7,11 +7,12 @@ export default class Header extends Component {
 
     render ()
     {
+        let year = new Date().getFullYear();
         let githubURL = "https://github.com/riston/hackernews-extension";
 
         return (
             <footer className="hn-footer">
-                <div>&copy; {new Date().getFullYear()} <a href={githubURL}>Risto</a></div>
+                <div>&copy; {year} Risto, <a href={githubURL}>source code</a></div>
             </footer>
         );
     }

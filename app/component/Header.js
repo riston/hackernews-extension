@@ -10,7 +10,9 @@ export default class Header extends Component {
         return (
             <header onClick={this._onClick}>
                 <section>
-                    <h1>HackerNews application</h1>
+                    <a href="#">
+                        <h1 data-action="back">HackerNews Reader</h1>
+                    </a>
                 </section>
                 <section>
                     {this.props.activeView !== "default" ?
@@ -20,10 +22,5 @@ export default class Header extends Component {
                 </section>
             </header>
         );
-    }
-
-    _onClick (e)
-    {
-        console.log("Clicked on", e.target.dataset.action);
     }
 }
