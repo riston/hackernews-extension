@@ -134,7 +134,6 @@ class Application extends Component {
             return;
         }
 
-
         let commentPromises = commentIDs.map(id => loadItemByIDExt(id));
 
         Promise.all(commentPromises)
@@ -161,6 +160,9 @@ class Application extends Component {
 function select (state)
 {
     let activeItemID = state.App.get("activeItemID");
+    let activeItem   = activeItemID
+        ? state.App.getIn(["items", activeItemID]).toJS()
+        : {};
 
     let byTime = function (x) { return x.get("time"); };
 
@@ -168,10 +170,9 @@ function select (state)
 
     // TODO: Optimize the selection
     return {
-        activeItemID: activeItemID,
+        activeItemID,
+        activeItem,
         activeView:   state.App.get("activeView"),
-        activeItem:   state.App.getIn(["items", activeItemID])
-            .toJS(),
         count:        state.App.get("count"),
         comments:     state.App.get("comments")
             .sortBy(byTime)

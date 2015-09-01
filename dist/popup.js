@@ -4,13 +4,11 @@ var port = chrome.extension.connect({
 });
 
 // Send the open event to background
-port.postMessage({ event: "popup-open" });
+// TODO: the each story item caused too much spam removed
+// until there is more clever way to diff the changes
+// port.postMessage({ event: "popup-open" });
 
 // Receive part
 port.onMessage.addListener(function(msg) {
     console.log("message recieved"+ msg);
 });
-
-setInterval(function () {
-    port.postMessage("Hi BackGround");
-}, 1e3);

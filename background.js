@@ -106,7 +106,7 @@ hnFire.onNewItem = function (item)
                 console.error("Failed to store state", item.id, chrome.runtime.lastError);
             }
 
-            setBadge("!");
+            // setBadge("!");
 
             console.log("Saved item", item.id, state);
         });
