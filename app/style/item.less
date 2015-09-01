@@ -9,6 +9,7 @@
     background-color: #FFF;
     font-size: 0.8em;
     word-break: break-all;
+    -webkit-user-select: none;
 
     .text {
         display: flex;
@@ -38,6 +39,12 @@
 
     .title {
         padding: 0.5em;
+        display: flex;
+        align-items: baseline;
+
+        .external-link {
+            padding-left: 0.5em;
+        }
     }
 
     .sub {

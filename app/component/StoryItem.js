@@ -30,6 +30,7 @@ export default class StoryItem extends Component {
 
     render ()
     {
+        let baseLink = `https://news.ycombinator.com/item?id=${this.props.id}`;
         let timeFromNow = moment(this.props.time * 1e3).fromNow();
         let classes = CN("hn-item", {
             deleted: Boolean(this.props.deleted)
@@ -45,6 +46,7 @@ export default class StoryItem extends Component {
                             data-action="comment-view"
                             data-item-id={this.props.id}>{`(${this.props.descendants})`}
                         </button>
+                        <a href={baseLink} target="_blank" className="external-link"><i className="fa fa-fw fa-external-link"></i></a>
                     </span>
                 </div>
                 <div className="sub">
