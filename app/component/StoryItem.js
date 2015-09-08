@@ -41,7 +41,9 @@ export default class StoryItem extends Component {
                 <div className="text">
                     <Badge score={this.props.score} />
                     <span className="title">
-                        <a href={this.props.url} target="_blank">{this.props.title}</a>
+                        <a href={this.props.url} target="_blank"
+                            data-action="story-open"
+                            data-item-id={this.props.id}>{this.props.title}</a>
                         <button className="comment-count"
                             data-action="comment-view"
                             data-item-id={this.props.id}>{`(${this.props.descendants})`}

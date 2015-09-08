@@ -16,6 +16,7 @@ let cacheState = {
     count:        15,
     activeView:   "default" || "comment",
     activeItemID: "",
+    visitedItems: {},
     comments:     {} || TestData.my.comments || TestData.comments,
     items:        {} || TestData.my.items || TestData.items,
 };

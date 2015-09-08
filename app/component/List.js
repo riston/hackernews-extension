@@ -9,10 +9,13 @@ export default class List extends Component {
 
     static propTypes = {
         items: PropTypes.array.isRequired,
+        visited: PropTypes.object.isRequired,
     }
 
     render ()
     {
+        console.log("visited", this.props.visited);
+
         return (
             <div className="hn-list">
                 {this.renderItems()}

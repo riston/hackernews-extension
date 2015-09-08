@@ -55,7 +55,9 @@ class Application extends Component {
         }
         else
         {
-            return <Default items={props.items} />
+            return <Default
+                items={props.items}
+                visited={props.visited} />
         }
     }
 
@@ -79,6 +81,10 @@ class Application extends Component {
         else if (action === "setting-view")
         {
             dispatch(Action.setView("setting"));
+        }
+        else if (action === "story-open")
+        {
+            dispatch(Action.visitItem(dataset.itemId))
         }
         else if (action === "child-comments")
         {
@@ -174,6 +180,7 @@ function select (state)
         activeItem,
         activeView:   state.App.get("activeView"),
         count:        state.App.get("count"),
+        visited:      state.App.get("visitedItems").toJS(),
         comments:     state.App.get("comments")
             .sortBy(byTime)
             .reverse()
@@ -182,6 +189,7 @@ function select (state)
             .map(x => x.toJS()),
         items:        state.App.get("items")
             .sortBy(byTime)
+            .take(25)
             .reverse()
             .toArray()
             .map(x => x.toJS()),

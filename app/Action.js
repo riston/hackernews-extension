@@ -4,6 +4,7 @@
  */
 
 export const ADD_ITEM        = "ADD_ITEM";
+export const VISIT_ITEM      = "VISIT_ITEM";
 export const LOAD_ITEMS      = "LOAD_ITEMS";
 export const LOAD_COMMENTS   = "LOAD_COMMENTS";
 export const CLEAR_COMMENTS  = "CLEAR_COMMENTS";
@@ -14,7 +15,18 @@ export const SET_ACTIVE_ITEM = "SET_ACTIVE_ITEM";
 export function incItem ()
 {
     return { type: INC_COUNT };
-};
+}
+
+/**
+ * Mark already opened story item as visited.
+ *
+ * @param  {string} itemID
+ * @return {Object}
+ */
+export function visitItem (itemID)
+{
+    return { type: VISIT_ITEM, itemID };
+}
 
 /**
  * Add news item to list.
@@ -51,6 +63,7 @@ export function loadComments (comments)
 
 /**
  * Clear comments
+ *
  * @return {Object}
  */
 export function clearComments ()
