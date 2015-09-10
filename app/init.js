@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import * as reducers from "./Reducer";
 
+import * as ChromeExt from "./ChromeExt";
 import {addItem, loadItems} from "./Action";
 import Application from "./component/Application";
 import TestData from "./test-data";
@@ -33,8 +34,20 @@ const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducer, initState);
 
 // Load from chrome storage
-if (chrome && chrome.storage && chrome.storage.local)
+if (ChromeExt.hasStorage())
 {
+    ChromeExt.updateState(s => {
+        s.App.count = 20;
+        return s;
+    })
+    .then(s => console.log("After update", s))
+    .catch(e => console.error("Error", e));
+
+
+    ChromeExt.getState()
+        .then(s => console.log(s))
+        .catch(e => console.error("Error", e));
+
     // Initial load, get all items
     chrome.storage.local.get(null, function (state)
     {

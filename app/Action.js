@@ -8,14 +8,8 @@ export const VISIT_ITEM      = "VISIT_ITEM";
 export const LOAD_ITEMS      = "LOAD_ITEMS";
 export const LOAD_COMMENTS   = "LOAD_COMMENTS";
 export const CLEAR_COMMENTS  = "CLEAR_COMMENTS";
-export const INC_COUNT       = "INC_COUNT";
 export const SET_VIEW        = "SET_VIEW";
 export const SET_ACTIVE_ITEM = "SET_ACTIVE_ITEM";
-
-export function incItem ()
-{
-    return { type: INC_COUNT };
-}
 
 /**
  * Mark already opened story item as visited.

@@ -4,12 +4,12 @@ import * as Action from "./Action";
 
 // Initial state
 const defaultState = Immutable.fromJS({
-    count: 1,
-    activeView: "default",
+    count:        1,
+    activeView:   "default",
     activeItemID: "10072188",
     visitedItems: {},
-    comments: { },
-    items: { }
+    comments:     {},
+    items:        {}
 });
 
 // The application level switch has grown too large, needs to be
