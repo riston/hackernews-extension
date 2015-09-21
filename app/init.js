@@ -36,18 +36,6 @@ const store = createStoreWithMiddleware(reducer, initState);
 // Load from chrome storage
 if (ChromeExt.hasStorage())
 {
-    ChromeExt.updateState(s => {
-        s.App.count = 20;
-        return s;
-    })
-    .then(s => console.log("After update", s))
-    .catch(e => console.error("Error", e));
-
-
-    ChromeExt.getState()
-        .then(s => console.log(s))
-        .catch(e => console.error("Error", e));
-
     // Initial load, get all items
     chrome.storage.local.get(null, function (state)
     {
@@ -76,9 +64,18 @@ if (ChromeExt.hasStorage())
 
 let containerEl = document.getElementById("container");
 
-React.render(
+let application = React.render(
     <Provider store={store}>
         {() => <Application />}
     </Provider>,
     containerEl
 );
+
+if (module.hot) {
+    require("react-hot-loader/Injection").RootInstanceProvider.injectProvider({
+        getRootInstances: function() {
+            // Help React Hot Loader figure out the root component instances on the page:
+            return [application];
+        }
+    });
+}

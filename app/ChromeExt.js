@@ -125,6 +125,14 @@ export function setState (newState)
 /**
  * Update the chrome local storage state via function.
  *
+ * @example
+ * ```
+ *  ChromeExt.updateState(s => {
+ *    s.App.count = 20;
+ *    return s;
+ *  })
+ * ```
+ *
  * @method updateState
  * @param  {Function} applyFn function with the state parameter and return changed state.
  * @return {Promise}
