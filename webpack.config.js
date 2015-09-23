@@ -1,12 +1,12 @@
 
-var path = require("path");
+var path    = require("path");
 var webpack = require("webpack");
 
-var node_modules = path.resolve(__dirname, "node_modules");
-var react_lib_path = path.resolve(node_modules, "react/lib");
-var react_path   = path.resolve(node_modules, "react/dist/react.min.js");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
-console.log("React", react_path);
+var node_modules   = path.resolve(__dirname, "node_modules");
+var react_lib_path = path.resolve(node_modules, "react/lib");
+var react_path     = path.resolve(node_modules, "react/dist/react.min.js");
 
 module.exports = {
 
@@ -24,7 +24,7 @@ module.exports = {
         }
     },
 
-    devtool: "eval",
+    // devtool: "eval",
 
     module: {
         noParse: [react_path],
@@ -51,4 +51,11 @@ module.exports = {
         filename: "bundle.js",
         path: "./dist",
     },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "template/main.dev.html",
+            inject:   false
+        })
+    ]
 };
